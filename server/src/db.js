@@ -1,9 +1,10 @@
 import mysql from "mysql2";
+import { DATABASE, PASSWORD_DB, USER_DB } from "./config.js";
 const conn = mysql.createConnection({
   host: "localhost",
-  user: "Steven",
-  password: "admin123",
-  database: "ges",
+  user: USER_DB,
+  password: PASSWORD_DB,
+  database: DATABASE,
 });
 conn.connect((err) => {
   if (err) {

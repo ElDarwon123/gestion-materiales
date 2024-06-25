@@ -23,16 +23,16 @@ USE `ges` ;
 -- -----------------------------------------------------
 -- Table `ges`.`table1`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ges`.`table1` (
-)
-ENGINE = InnoDB;
-
+select * from Usuario where email = 'darwin@1';
+SELECT * FROM Usuario;
+SELECT * FROM Role;
+drop table Usuario;
 
 -- -----------------------------------------------------
 -- Table `ges`.`Role`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ges`.`Role` (
-  `idRole` INT NOT NULL,
+  `idRole` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
   PRIMARY KEY (`idRole`))
 ENGINE = InnoDB;
@@ -42,10 +42,11 @@ ENGINE = InnoDB;
 -- Table `ges`.`Usuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ges`.`Usuario` (
-  `idUsuario` INT GENERATED ALWAYS AS () VIRTUAL,
+  `idUsuario` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
   `apellido` VARCHAR(45) NULL,
-  `email` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL UNIQUE,
+  `password` VARCHAR(255) NULL,
   `Role_idRole` INT NOT NULL,
   PRIMARY KEY (`idUsuario`),
   INDEX `fk_Usuario_Role_idx` (`Role_idRole` ASC) VISIBLE,
@@ -61,7 +62,7 @@ ENGINE = InnoDB;
 -- Table `ges`.`Material`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ges`.`Material` (
-  `idPaquete` INT NOT NULL,
+  `idPaquete` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
   `descripcion` VARCHAR(45) NULL,
   `estado` TINYINT NULL,
@@ -73,8 +74,8 @@ ENGINE = InnoDB;
 -- Table `ges`.`Entrega`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ges`.`Entrega` (
-  `Paquete_idPaquete` INT NOT NULL,
-  `Usuario_idUsuario` INT NOT NULL,
+  `Paquete_idPaquete` INT NOT NULL AUTO_INCREMENT,
+  `Usuario_idUsuario` INT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`Paquete_idPaquete`, `Usuario_idUsuario`),
   INDEX `fk_Paquete_has_Usuario_Usuario1_idx` (`Usuario_idUsuario` ASC) VISIBLE,
   INDEX `fk_Paquete_has_Usuario_Paquete1_idx` (`Paquete_idPaquete` ASC) VISIBLE,
