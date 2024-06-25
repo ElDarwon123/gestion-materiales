@@ -11,7 +11,7 @@ const app = express()
 
 app.use(
     cors({
-      origin: FRONTEND_URL,
+      origin: '*',
       methods: ['GET', 'POST', 'DELETE', 'PATCH'],
       allowedHeaders: ['Content-Type', 'Authorization'],
     })

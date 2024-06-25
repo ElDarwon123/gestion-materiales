@@ -2,26 +2,23 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Register from './components/Register';
 import Login from './components/Login';
-//import useAuth from "./hooks/useAuth.jsx";
-import HomePage from "./pages/Home.jsx";
-function App() {
+import HomePage from './pages/Home.jsx';
+import HomeUser from './pages/HomeUser.jsx';
+import { AuthProvider, ProtectedRoute } from './context/authContext.jsx';
 
-  //const { user } = useAuth()
-  /* {user && user.role === 'Admin' ? (
-          <Route path="/register" element={<Register />} />
-        ) : (
-          <Navigate to="/" replace />
-        )} */
+function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/" element={<HomePage/>} />
-        
-
-        
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          {/* Ruta protegida para registro solo para usuarios Admin */} 
+          
+          <Route path='/register' element={<Register/>}/>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<HomeUser />} />
+        </Routes>
+      </AuthProvider>
     </BrowserRouter>
   );
 }

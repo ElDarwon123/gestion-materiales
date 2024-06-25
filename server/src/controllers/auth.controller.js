@@ -44,6 +44,17 @@ export const Login = (req, res) => {
             expiresIn: 86400, // 24 hours
         });
 
+        res.cookie('token', token)
+
         res.status(200).send({ auth: true, token });
     });
 };
+
+export const logout = async (req, res) => {
+    res.cookie("token", "", {
+      httpOnly: true,
+      secure: true,
+      expires: new Date(0),
+    });
+    return res.sendStatus(200);
+  };

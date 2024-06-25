@@ -2,16 +2,20 @@ import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
-
+import axios from 'axios'
+import Cookies from "js-cookie";
 const navigation = [
-  { name: 'Product', href: '/login' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
+  { name: 'Registrar Usuarios', href: '/register' },
+
 ]
 
-export default function Example() {
+export default function HomeUser() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  const logout = async () => {
+    const response = await axios.post('http://localhost:4000/auth/logout');
+    Cookies.remove()
+  }
 
   return (
     <div className="bg-white">
@@ -46,7 +50,7 @@ export default function Example() {
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <Link to='/login' className="text-sm font-semibold leading-6 text-gray-900">
-            Log in <span aria-hidden="true">&rarr;</span>
+            log out <span aria-hidden="true">&rarr;</span>
             </Link>
           </div>
         </nav>

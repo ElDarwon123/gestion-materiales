@@ -9,6 +9,7 @@ const Register = () => {
   const [role, setRole] = useState('');
   const [message, setMessage] = useState('');
   const navigator = useNavigate()
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -20,37 +21,39 @@ const Register = () => {
         role_idRole: role,
       });
       setMessage(response.data);
-      navigator('/login')
+      
+
+
+
     } catch (error) {
       setMessage('Error en el registro');
     }
   };
 
   return (
-    <div>
-      <h2>Registro</h2>
+    <div className='bg-white h-full p-10 text-slate-600 flex items-center justify-center'>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Nombre:</label>
-          <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
+          <input  className='bg-white' type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} required placeholder='  Nombre'/>
         </div>
         <div>
           <label>Apellido:</label>
-          <input type="text" value={apellido} onChange={(e) => setApellido(e.target.value)} required />
+          <input  className='bg-white' type="text" value={apellido} onChange={(e) => setApellido(e.target.value)} required placeholder=' Apellido'/>
         </div>
         <div>
           <label>Email:</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <input  className='bg-white' type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder='  Email'/>
         </div>
         <div>
           <label>Password:</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <input  className='bg-white' type="password" value={password} onChange={(e) => setPassword(e.target.value)} required placeholder='Password' />
         </div>
         <div>
           <label>Role ID:</label>
-          <input type="number" value={role} onChange={(e) => setRole(e.target.value)} required />
+          <input  className='bg-white w-fit' type="number" value={role}  min="1" max="3" onChange={(e) => setRole(e.target.value)} required placeholder=' Role: 1, 2, 3'/>
         </div>
-        <button type="submit">Registrar</button>
+        <button className='mt-5 bg-slate-600 rounded-lg text-white px-5 py-2' type="submit">Registrar</button>
       </form>
       {message && <p>{message}</p>}
     </div>

@@ -1,8 +1,10 @@
 import Router from "express";
-import { createUser } from "../controllers/usuario.controller.js";
+import {  getUserById, getUsers  } from "../controllers/usuario.controller.js";
+import { authenticateToken } from "../middlewares/auth.middleware.js";
 
 const router = Router()
 
-router.post('/user', createUser)
+router.get('/user', getUsers)
+router.get('/user/:id', getUserById)
 
 export default router
