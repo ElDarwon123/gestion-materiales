@@ -34,24 +34,29 @@ const Register = () => {
     <div className='bg-white h-full p-10 text-slate-600 flex items-center justify-center'>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Nombre:</label>
+          <label>Nombre: </label>
           <input  className='bg-white' type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} required placeholder='  Nombre'/>
         </div>
         <div>
-          <label>Apellido:</label>
+          <label>Apellido: </label>
           <input  className='bg-white' type="text" value={apellido} onChange={(e) => setApellido(e.target.value)} required placeholder=' Apellido'/>
         </div>
         <div>
-          <label>Email:</label>
+          <label>Email: </label>
           <input  className='bg-white' type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder='  Email'/>
         </div>
         <div>
-          <label>Password:</label>
+          <label>Password: </label>
           <input  className='bg-white' type="password" value={password} onChange={(e) => setPassword(e.target.value)} required placeholder='Password' />
         </div>
         <div>
-          <label>Role ID:</label>
-          <input  className='bg-white w-fit' type="number" value={role}  min="1" max="3" onChange={(e) => setRole(e.target.value)} required placeholder=' Role: 1, 2, 3'/>
+          <label>Role: </label>
+          <select className='bg-white w-fit' onChange={(e) => setRole(e.target.value)} required>
+            <option value="1">Administrador</option>
+            <option value="2">Estudiante</option>
+            <option value="3">Repartidor</option>
+          </select>
+          
         </div>
         <button className='mt-5 bg-slate-600 rounded-lg text-white px-5 py-2' type="submit">Registrar</button>
       </form>

@@ -6,6 +6,9 @@ import axios from 'axios'
 import Cookies from "js-cookie";
 const navigation = [
   { name: 'Registrar Usuarios', href: '/register' },
+  { name: 'Gestionar Usuarios', href: '/user' },
+  { name: 'Gestionar Materiales', href: '/material' },
+  { name: 'Registrar Materiales', href: '/material/create' },
 
 ]
 
@@ -50,7 +53,7 @@ export default function HomeUser() {
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <Link to='/login' className="text-sm font-semibold leading-6 text-gray-900">
-            log out <span aria-hidden="true">&rarr;</span>
+            Log Out <span aria-hidden="true">&rarr;</span>
             </Link>
           </div>
         </nav>
@@ -90,7 +93,7 @@ export default function HomeUser() {
                 </div>
                 <div className="py-6">
                   <a href="/login" className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                  Log in
+                  Log Out
                   </a>
                   
                 </div>
